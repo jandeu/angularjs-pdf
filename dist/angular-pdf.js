@@ -87,7 +87,7 @@
             renderTask = page.render(renderContext);
             renderTask.promise.then(function() {
                 if (typeof scope.onPageRender === 'function') {
-                    scope.onPageRender();
+                    scope.onPageRender(scope.pageNum);
                 }
             }).catch(function (reason) {
                 console.log(reason);
@@ -169,7 +169,7 @@
             pdfLoaderTask.then(
                 function(_pdfDoc) {
                   if (typeof scope.onLoad === 'function') {
-                    scope.onLoad();
+                    scope.onLoad(_pdfDoc.numPages);
                   }
 
                   pdfDoc = _pdfDoc;
